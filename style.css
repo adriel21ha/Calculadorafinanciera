@@ -1,0 +1,517 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* =====================
+   CSS VARIABLES
+   ===================== */
+:root {
+    --bg-dark: #0a0a0f;
+    --bg-card: #111118;
+    --bg-surface: #1a1a24;
+    --accent-gold: #f0c040;
+    --accent-gold-dim: #c49a20;
+    --accent-green: #2ecc71;
+    --accent-red: #e74c3c;
+    --text-primary: #f0ede8;
+    --text-muted: #7a7a8c;
+    --border: #2a2a38;
+    --shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* =====================
+   BASE
+   ===================== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* =====================
+   LOGIN — SIN CAMBIOS
+   ===================== */
+.login-box {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 30%, #7367f0 90%, #4831d4 100%);
+    padding: 40px;
+    border-radius: 20px;
+    width: 350px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.login-box h1 {
+    font-size: 3rem;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.99rem;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    color: rgb(255, 255, 255);
+    padding: 8px 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.btn-signin {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 50px;
+    background-color: #9d50bb;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.btn-signin:hover {
+    background-color: #6e48aa;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    margin-bottom: 25px;
+}
+
+.options a, .signup-text a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+/* =====================
+   DASHBOARD
+   ===================== */
+h1 {
+    font-family: 'Syne', sans-serif;
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin: 0 0 4px 0;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 300;
+    text-align: center;
+    margin: 0 0 32px 0;
+    letter-spacing: 1px;
+}
+
+.panel {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 36px;
+    text-align: center;
+    min-width: 200px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.6s ease both;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-dim));
+    border-radius: 16px 16px 0 0;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(240, 192, 64, 0.1);
+}
+
+.card h3 {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 12px 0;
+}
+
+.card p, #totalIngresos {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--accent-gold);
+    margin: 0;
+}
+
+/* Botones del dashboard */
+button {
+    font-family: 'DM Sans', sans-serif;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    letter-spacing: 0.5px;
+}
+
+button:not(.btn-signin):not([type="submit"]) {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+button:not(.btn-signin):not([type="submit"]):hover {
+    background: var(--accent-gold);
+    color: var(--bg-dark);
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(240, 192, 64, 0.25);
+}
+
+.btn-logout {
+    background: transparent !important;
+    color: var(--accent-red) !important;
+    border: 1px solid var(--accent-red) !important;
+}
+
+.btn-logout:hover {
+    background: var(--accent-red) !important;
+    color: white !important;
+    box-shadow: 0 8px 24px rgba(231, 76, 60, 0.25) !important;
+}
+
+/* =====================
+   GESTOR DE INGRESOS
+   ===================== */
+.container {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px;
+    width: 460px;
+    max-width: 95vw;
+    box-shadow: var(--shadow);
+    animation: fadeUp 0.5s ease both;
+}
+
+.stats {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stats::after {
+    content: '◈';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: var(--border);
+}
+
+.total-label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.total-amount {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent-gold);
+}
+
+/* Formulario */
+form#ingresoForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+form#ingresoForm input,
+form#ingresoForm select {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-primary);
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form#ingresoForm input::placeholder {
+    color: var(--text-muted);
+}
+
+form#ingresoForm input:focus,
+form#ingresoForm select:focus {
+    border-color: var(--accent-gold);
+}
+
+form#ingresoForm select option {
+    background: var(--bg-surface);
+}
+
+form#ingresoForm button[type="submit"] {
+    background: var(--accent-gold);
+    color: var(--bg-dark);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+    letter-spacing: 0.5px;
+}
+
+form#ingresoForm button[type="submit"]:hover {
+    background: var(--accent-gold-dim);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(240, 192, 64, 0.3);
+}
+
+/* Lista de ingresos */
+#listaIngresos {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+#listaIngresos::-webkit-scrollbar {
+    width: 4px;
+}
+
+#listaIngresos::-webkit-scrollbar-track {
+    background: var(--bg-surface);
+}
+
+#listaIngresos::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+#listaIngresos li {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    animation: fadeUp 0.3s ease both;
+    transition: border-color 0.2s;
+}
+
+#listaIngresos li:hover {
+    border-color: var(--text-muted);
+}
+
+#listaIngresos li button {
+    background: transparent;
+    border: none !important;
+    padding: 4px 8px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+#listaIngresos li button:hover {
+    opacity: 1;
+    background: rgba(231, 76, 60, 0.15) !important;
+    transform: none !important;
+    box-shadow: none !important;
+    color: var(--accent-red) !important;
+    border-color: transparent !important;
+}
+
+/* Botones del gestor */
+.button-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* =====================
+   ANIMACIONES
+   ===================== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =====================
+   DASHBOARD CENTRADO
+   ===================== */
+.dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 28px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.dashboard-header {
+    text-align: center;
+}
+
+.dashboard-header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--text-primary, #f0ede8);
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+}
+
+.dashboard-header h2 {
+    font-size: 0.9rem;
+    color: var(--text-muted, #7a7a8c);
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.dashboard-card {
+    background: var(--bg-card, #111118);
+    border: 1px solid var(--border, #2a2a38);
+    border-radius: 20px;
+    padding: 36px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    min-width: 280px;
+}
+
+.dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f0c040, #c49a20);
+}
+
+.card-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted, #7a7a8c);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.dashboard-card #totalIngresos {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #f0c040;
+    margin: 0;
+}
+
+.dashboard-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+}
+/* Proteger estilos del login */
+.login-box h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 3rem !important;
+    font-weight: bold !important;
+    letter-spacing: normal !important;
+    color: rgb(0, 0, 0) !important;
+    margin-bottom: 5px !important;
+}
+
+.login-box h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 1.5rem !important;
+    font-weight: normal !important;
+    letter-spacing: normal !important;
+    color: rgb(0, 0, 0) !important;
+    margin-bottom: 30px !important;
+}
+
+/* Arreglar título del gestor */
+.container h1 {
+    font-size: 1.8rem !important;
+    white-space: nowrap;
+}

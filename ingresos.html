@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Calculadora financiera</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+      if (!localStorage.getItem("usuario")) {
+          window.location.replace("index.html");
+      }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Gestor de Ingresos</h1>
+
+    <div class="stats">
+      <span class="total-label">Total</span>
+      <div class="total-amount" id="totalIngresos">$0</div>
+    </div>
+
+    <form id="ingresoForm">
+      <input type="text" id="concepto" placeholder="Concepto" required>
+      <input type="number" id="monto" placeholder="Monto" required>
+      <select id="tipo">
+          <option value="ingreso">➕ Ingreso</option>
+          <option value="gasto">➖ Gasto</option>
+      </select>
+      <button type="submit">Agregar</button>
+    </form>
+
+    <ul id="listaIngresos"></ul>
+
+    <div class="button-group">
+      <button onclick="history.back()">← Atrás</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
