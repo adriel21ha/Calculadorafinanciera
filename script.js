@@ -157,3 +157,10 @@ const saludo = document.getElementById("saludo");
 if (saludo) {
     saludo.textContent = usuario ? `Bienvenido, ${usuario}` : "";
 }
+
+// ===== ACTUALIZACIÓN AUTOMÁTICA =====
+window.addEventListener('storage', function(e) {
+    if (e.key && e.key.startsWith('ingresos_')) {
+        actualizarTotalIngresos();
+    }
+});
