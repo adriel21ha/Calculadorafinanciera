@@ -52,11 +52,15 @@ document.getElementById("registroForm")?.addEventListener("submit", function(e) 
 
 // ===== HELPERS =====
 function getUsuarioActual() {
-    return localStorage.getItem("usuario");
+    const usuario = localStorage.getItem("usuario");
+    console.log("Usuario actual:", usuario);
+    return usuario;
 }
 
 function getKeyIngresos() {
-    return `ingresos_${getUsuarioActual()}`;
+    const key = `ingresos_${getUsuarioActual()}`;
+    console.log("Key de ingresos:", key);
+    return key;
 }
 
 // ===== NAVEGACIÓN =====
@@ -131,11 +135,13 @@ function eliminarIngreso(index) {
 // ===== TOTAL (ingresos - gastos) =====
 function actualizarTotalIngresos() {
     const ingresos = JSON.parse(localStorage.getItem(getKeyIngresos())) || [];
+    console.log("Ingresos cargados:", ingresos);
     let total = ingresos.reduce((sum, ing) => {
         let monto = Number(ing.monto) || 0;
+        console.log(`Procesando ${ing.tipo}: ${ing.monto} -> ${monto}`);
         return ing.tipo === "gasto" ? sum - monto : sum + monto;
     }, 0);
-
+    console.log("Total calculado:", total);
     const el = document.getElementById("totalIngresos");
     if (el) {
         el.textContent = `$${total}`;
